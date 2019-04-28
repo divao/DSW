@@ -1,0 +1,21 @@
+body {
+ background-color: lightgray;
+}
+h1 {
+ font-style: inherit;
+}
+
+table {
+ border-collapse:collapse;
+}
+table, th, td {
+ border: 1px solid black;
+}
+th {
+ background-color:lightgreen;
+ color:yellow;
+}
+td {
+ text-align: center;
+}
+

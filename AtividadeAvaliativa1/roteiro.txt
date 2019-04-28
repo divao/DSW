@@ -1,0 +1,22 @@
+O SGBD utilizado é o Java DB.
+ -Nome do banco: Locadora
+ -Usuario: root
+ -Senha: root
+
+O script pode ser encontrado no arquivo BD.txt
+
+Para criação de usuarios teste executar a classe criaUsuario.java no pacote br.ufscar.dc.dsw.locadora.util.
+
+Serão criados três usuários:
+
+Email: admin@admin
+senha: admin
+permissão: administrador
+
+Email: user@user
+senha:user
+permissão: Cliente comum
+
+Email: locadora@locadora
+Senha: locadora
+Permissão: Locadora
