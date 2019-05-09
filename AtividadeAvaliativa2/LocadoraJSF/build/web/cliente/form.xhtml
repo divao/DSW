@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">  
+    <h:head>  
+        <title>#{msg['cliente.form.page.title']}</title>
+        <link rel="stylesheet" 
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+              crossorigin="anonymous"/>  
+    </h:head>  
+    <h:body>  
+        <h:form id="form" class="form-horizontal">  
+            <div class="form-group">  
+                <div class="col-sm-4"></div>  
+                <div  class="col-sm-4">  
+                    <h2 style="text-align: center">#{msg['cliente.form.label']}</h2>  
+                </div>  
+            </div>  
+            <hr/>  
+            <div class="form-group">  
+                <h:outputLabel for="cpf" class="control-label col-sm-4">#{msg['cliente.cpf.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="cpf" value="#{clienteBean.cliente.cpf}" class="form-control"   
+                                 validatorMessage="#{msg['cliente.cpf.required.message']}">
+                        <f:validateRequired/>
+                    </h:inputText>
+                    <h:message for="cpf"/>
+                </div>  
+            </div>  
+                        
+            <div class="form-group">  
+                <h:outputLabel for="nomeCliente" class="control-label col-sm-4">#{msg['cliente.nome.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="nomeCliente" value="#{clienteBean.cliente.nome}" class="form-control"   
+                                 validatorMessage="#{msg['cliente.nome.required.message']}">
+                        <f:validateRequired/>
+                    </h:inputText>
+                    <h:message for="nomeCliente"/>
+                </div>  
+            </div>  
+            <div class="form-group">  
+                <h:outputLabel for="email" class="control-label col-sm-4">#{msg['cliente.email.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="email" value="#{clienteBean.cliente.email}" class="form-control"   
+                                   validatorMessage="#{msg['cliente.email.required.message']}"
+                                   a:type="text" >
+                        <f:validateRequired/>
+                        
+                    </h:inputText>
+                    <h:message for="email"/>
+                </div>  
+            </div>
+            
+            <div class="form-group">  
+                <h:outputLabel for="senha" class="control-label col-sm-4">#{msg['cliente.senha.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="senha" value="#{clienteBean.cliente.senha}" class="form-control"   
+                                 validatorMessage="#{msg['cliente.senha.required.message']}"
+                                 a:type="Password" >
+                        <f:validateRequired/>
+                    </h:inputText>
+                    <h:message for="senha"/>
+                </div>  
+            </div>
+            
+            <div class="form-group">  
+                <h:outputLabel for="telefone" class="control-label col-sm-4">#{msg['cliente.telefone.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="nome" value="#{clienteBean.cliente.telefone}" class="form-control"   
+                                 validatorMessage="#{msg['cliente.telefone.required.message']}">
+                        <f:validateRequired/>
+                    </h:inputText>
+                    <h:message for="telefone"/>
+                </div>  
+            </div>  
+            
+            <div class="form-group">  
+                <h:outputLabel for="dataNascimento" class="control-label col-sm-4">#{msg['cliente.datanascimento.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="ano" value="#{clienteBean.cliente.dataNascimento}" class="form-control"   
+                                   validatorMessage="#{msg['cliente.datanascimento.required.message']}"
+                                   a:type="date" >
+                        <f:validateRequired/>
+                        
+                    </h:inputText>
+                    <h:message for="email"/>
+                </div>  
+            </div>
+            
+            <div class="form-group">  
+                <h:outputLabel for="sexo" class="control-label col-sm-4">#{msg['cliente.sexo.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <h:inputText id="sexo" value="#{clienteBean.cliente.sexo}" class="form-control"   
+                                 validatorMessage="#{msg['cliente.sexo.required.message']}">
+                        <f:validateRequired/>
+                    </h:inputText>
+                    <h:message for="sexo"/>
+                </div>  
+            </div>  
+
+
+            <div class="form-group">  
+                <div class="col-sm-4"></div>  
+                <div class="col-sm-4">  
+                    <div class="col-sm-2">
+                        <h:commandButton value="#{msg['cliente.save.command.label']}" action="#{clienteBean.salva()}" 
+                              class="btn btn-primary" style="width: 80px;">
+                         </h:commandButton>  
+                    </div>  
+                    <br/> 
+                    <div class="col-sm-2">  
+                        <h:link outcome="index" value="#{msg['cliente.list.command.label']}" class="btn btn-success" />  
+                    </div>  
+                </div>  
+            </div>  
+        </h:form>  
+    </h:body>  
+</html>
