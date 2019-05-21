@@ -3,6 +3,7 @@
   <persistence-unit name="LocadoraPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.ufscar.dc.dsw.pojo.Cliente</class>
+    <class>br.ufscar.dc.dsw.pojo.Locacao</class>
     <class>br.ufscar.dc.dsw.pojo.Locadora</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>

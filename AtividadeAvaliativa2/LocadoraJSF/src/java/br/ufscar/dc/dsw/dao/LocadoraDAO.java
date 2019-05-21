@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class LocadoraDAO extends GenericDAO<Locadora> {
 
@@ -53,5 +54,13 @@ public class LocadoraDAO extends GenericDAO<Locadora> {
         Locadora locadora = em.find(Locadora.class, id);
         em.close();
         return locadora;
+    }
+    
+     public List<Locadora> getPorNome(String nome) {
+        EntityManager em = this.getEntityManager();
+        String s = "select p from Locadora p where p.nome = :nome";
+        TypedQuery<Locadora> q = em.createQuery(s, Locadora.class);
+        q.setParameter("nome", nome);
+        return q.getResultList();
     }
 }

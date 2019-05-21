@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -18,3 +19,21 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/locacao/form.xhtml</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/locadora/lista.xhtml</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/dao/LocacaoDAO.java</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/locacao/index.xhtml</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/index.xhtml</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/bean/LocacaoBean.java</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/bean/LocadoraBean.java</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/locadora/index.xhtml</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> master
