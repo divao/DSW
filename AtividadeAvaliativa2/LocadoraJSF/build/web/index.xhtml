@@ -7,11 +7,13 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandLink action="#{clienteBean.lista()}">Gerenciamento dos Clientes</h:commandLink><br/>
+            <h:commandLink action="#{clienteBean.lista()}" value="#{msg['cliente.gerenciamento']}"></h:commandLink><br/>
  
-            <h:commandLink action="#{locadoraBean.lista()}">Gerenciamento de Locadoras</h:commandLink><br/>
+            <h:commandLink action="#{locadoraBean.lista()}" value="#{msg['locadora.gerenciamento']}"></h:commandLink><br/>
             
-            <h:commandLink action="#{locacaoBean.lista()}">Gerenciamento de Locações</h:commandLink><br/>
+            <h:commandLink action="#{locacaoBean.lista()}" value="#{msg['locacao.gerenciamento']}"></h:commandLink><br/>
+            
+            <h:commandLink action="#{locadoraBean.lista2()}" value="#{msg['locadora.list.page.title']}"></h:commandLink><br/>
  
         </h:form>
     </h:body> 

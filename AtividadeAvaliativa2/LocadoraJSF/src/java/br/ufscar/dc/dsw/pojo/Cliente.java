@@ -1,10 +1,13 @@
 package br.ufscar.dc.dsw.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente implements Serializable {
@@ -19,6 +22,18 @@ public class Cliente implements Serializable {
     private String telefone;
     private String dataNascimento;
     private String sexo;
+    
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Locacao> locacoes;
+
+    public List<Locacao> getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(List<Locacao> locacoes) {
+        this.locacoes = locacoes;
+    }
+    
 
     public String getTelefone() {
         return telefone;
@@ -86,6 +101,21 @@ public class Cliente implements Serializable {
         this.sexo = sexo;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (!(obj instanceof Cliente))
+		return false;
+	Cliente other = (Cliente) obj;
+	return other.nome.equals(this.nome);
+    }
     
+    @Override
+    public String toString() {
+        return nome;
+    }
     
 }
