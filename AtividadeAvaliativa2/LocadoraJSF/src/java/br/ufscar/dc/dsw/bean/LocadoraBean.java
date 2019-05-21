@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
 public class LocadoraBean {
 
     private Locadora locadora;
-    private String nome;
+    private String cidade;
 
     public String lista() {
         return "locadora/index.xhtml";
@@ -59,23 +59,23 @@ public class LocadoraBean {
         return dao.getAll();
     }
 
-    public List<Locadora> getPorNome() throws SQLException {
+    public List<Locadora> getPorCidade() throws SQLException {
         LocadoraDAO dao = new LocadoraDAO();
 
-        if (nome == null || nome.equals("")) {
+        if (cidade == null || cidade.equals("")) {
             return dao.getAll();
         } else {
-            return dao.getPorNome(nome);
+            return dao.getPorCidade(cidade);
         }
 
     }
 
-    public String getNome() {
-        return nome;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public Locadora getLocadora() {

@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.ufscar.dc.dsw.bean;
-
-/**
- *
- * @author Jackson Victor
- */
-public class LocacaoBean {
-    
-}
-=======
 package br.ufscar.dc.dsw.bean;
 
 import br.ufscar.dc.dsw.dao.LocacaoDAO;
@@ -79,4 +63,3 @@ public class LocacaoBean {
         return locacao;
     }
 }
->>>>>>> master

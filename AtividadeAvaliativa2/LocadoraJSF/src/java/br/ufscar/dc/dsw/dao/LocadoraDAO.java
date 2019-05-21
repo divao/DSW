@@ -56,11 +56,11 @@ public class LocadoraDAO extends GenericDAO<Locadora> {
         return locadora;
     }
     
-     public List<Locadora> getPorNome(String nome) {
+     public List<Locadora> getPorCidade(String cidade) {
         EntityManager em = this.getEntityManager();
-        String s = "select p from Locadora p where p.nome = :nome";
+        String s = "select p from Locadora p where p.cidade = :cidade";
         TypedQuery<Locadora> q = em.createQuery(s, Locadora.class);
-        q.setParameter("nome", nome);
+        q.setParameter("cidade", cidade);
         return q.getResultList();
     }
 }
