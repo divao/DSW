@@ -1,57 +1,57 @@
 package br.ufscar.dc.dsw.dao;
-
-import br.ufscar.dc.dsw.pojo.Cliente;
+ 
+import br.ufscar.dc.dsw.pojo.Locacao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-
-public class ClienteDAO extends GenericDAO<Cliente> {
-
+ 
+public class LocacaoDAO extends GenericDAO<Locacao>{
+    
     @Override
-    public void save(Cliente cliente) {
+    public void save(Locacao locacao) {
         EntityManager em = this.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.persist(cliente);
+        em.persist(locacao);
         tx.commit();
         em.close();
     }
-
+    
     @Override
-    public List<Cliente> getAll() {
+    public List<Locacao> getAll() {
         EntityManager em = this.getEntityManager();
-        Query q = em.createQuery("select l from Cliente l", Cliente.class);
-        List<Cliente> clientes = q.getResultList();
+        Query q = em.createQuery("select l from Locacao l", Locacao.class);
+        List<Locacao> locacoes = q.getResultList();
         em.close();
-        return clientes;
+        return locacoes;
     }
-
+ 
     @Override
-    public void delete(Cliente cliente) {
+    public void delete(Locacao locacao) {
         EntityManager em = this.getEntityManager();
         EntityTransaction tx = em.getTransaction();
-        cliente = em.getReference(Cliente.class, cliente.getId());
+        locacao = em.getReference(Locacao.class, locacao.getId());
         tx.begin();
-        em.remove(cliente);
+        em.remove(locacao);
         tx.commit();
     }
-
+    
     @Override
-    public void update(Cliente cliente) {
+    public void update(Locacao locacao) {
         EntityManager em = this.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.merge(cliente);
+        em.merge(locacao);
         tx.commit();
         em.close();
     }
-
+ 
     @Override
-    public Cliente get(Long id) {
+    public Locacao get(Long id) {
         EntityManager em = this.getEntityManager();
-        Cliente cliente = em.find(Cliente.class, id);
+        Locacao locacao = em.find(Locacao.class, id);
         em.close();
-        return cliente;
+        return locacao;
     }
 }

@@ -12,9 +12,14 @@ import javax.faces.bean.SessionScoped;
 public class LocadoraBean {
 
     private Locadora locadora;
+    private String nome;
 
     public String lista() {
         return "locadora/index.xhtml";
+    }
+
+    public String lista2() {
+        return "locadora/lista.xhtml";
     }
 
     public String cadastra() {
@@ -35,6 +40,7 @@ public class LocadoraBean {
         } else {
             dao.update(locadora);
         }
+        locadora = new Locadora();
         return "index.xhtml";
     }
 
@@ -51,6 +57,25 @@ public class LocadoraBean {
     public List<Locadora> getlocadoras() throws SQLException {
         LocadoraDAO dao = new LocadoraDAO();
         return dao.getAll();
+    }
+
+    public List<Locadora> getPorNome() throws SQLException {
+        LocadoraDAO dao = new LocadoraDAO();
+
+        if (nome == null || nome.equals("")) {
+            return dao.getAll();
+        } else {
+            return dao.getPorNome(nome);
+        }
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Locadora getLocadora() {
