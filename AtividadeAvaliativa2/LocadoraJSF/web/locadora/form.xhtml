@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
       xmlns:h="http://xmlns.jcp.org/jsf/html"  
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">  
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">  
     <h:head>  
         <title>#{msg['locadora.form.page.title']}</title>
         <link rel="stylesheet" 
@@ -20,13 +21,16 @@
                 </div>  
             </div>  
             <hr/>  
-            <div class="form-group">  
+             <div class="form-group">  
                 <h:outputLabel for="cnpj" class="control-label col-sm-4">#{msg['locadora.cnpj.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="cnpj" value="#{locadoraBean.locadora.cnpj}" class="form-control"   
-                                 validatorMessage="#{msg['locadora.cnpj.required.message']}">
+                    
+
+                    <p:inputMask id="cnpj" value="#{locadoraBean.locadora.cnpj}" class="form-control"   
+                                 validatorMessage="#{msg['locadora.cnpj.required.message']}" mask="99.999.999/9999-99">
                         <f:validateRequired/>
-                    </h:inputText>
+
+                    </p:inputMask>                    
                     <h:message for="cnpj"/>
                 </div>  
             </div>  
@@ -34,22 +38,22 @@
             <div class="form-group">  
                 <h:outputLabel for="nomeLocadora" class="control-label col-sm-4">#{msg['locadora.nome.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="nomeLocadora" value="#{locadoraBean.locadora.nome}" class="form-control"   
+                    <p:inputText id="nomeLocadora" value="#{locadoraBean.locadora.nome}" class="form-control"   
                                  validatorMessage="#{msg['locadora.nome.required.message']}">
                         <f:validateRequired/>
-                    </h:inputText>
+                    </p:inputText>
                     <h:message for="nomeLocadora"/>
                 </div>  
             </div>  
             <div class="form-group">  
                 <h:outputLabel for="email" class="control-label col-sm-4">#{msg['locadora.email.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="ano" value="#{locadoraBean.locadora.email}" class="form-control"   
+                    <p:inputText id="ano" value="#{locadoraBean.locadora.email}" class="form-control"   
                                    validatorMessage="#{msg['locadora.email.required.message']}"
                                    a:type="text" >
                         <f:validateRequired/>
                         
-                    </h:inputText>
+                    </p:inputText>
                     <h:message for="email"/>
                 </div>  
             </div>
@@ -57,11 +61,11 @@
             <div class="form-group">  
                 <h:outputLabel for="senha" class="control-label col-sm-4">#{msg['locadora.senha.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="senha" value="#{locadoraBean.locadora.senha}" class="form-control"   
+                    <p:inputText id="senha" value="#{locadoraBean.locadora.senha}" class="form-control"   
                                  validatorMessage="#{msg['locadora.senha.required.message']}"
                                  a:type="Password" >
                         <f:validateRequired/>
-                    </h:inputText>
+                    </p:inputText>
                     <h:message for="senha"/>
                 </div>  
             </div>
@@ -69,10 +73,10 @@
             <div class="form-group">  
                 <h:outputLabel for="cidade" class="control-label col-sm-4">#{msg['locadora.cidade.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <h:inputText id="nome" value="#{locadoraBean.locadora.cidade}" class="form-control"   
+                    <p:inputText id="nome" value="#{locadoraBean.locadora.cidade}" class="form-control"   
                                  validatorMessage="#{msg['locadora.cidade.required.message']}">
                         <f:validateRequired/>
-                    </h:inputText>
+                    </p:inputText>
                     <h:message for="cidade"/>
                 </div>  
             </div>  
