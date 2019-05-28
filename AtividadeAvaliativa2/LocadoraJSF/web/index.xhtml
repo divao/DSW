@@ -1,20 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:sec="http://www.springframework.org/security/tags">
     <h:head>
         <title>Locação</title>
     </h:head>
     <h:body>
         <h:form>
-            <h:commandLink action="#{clienteBean.lista()}" value="#{msg['cliente.gerenciamento']}"></h:commandLink><br/>
- 
-            <h:commandLink action="#{locadoraBean.lista()}" value="#{msg['locadora.gerenciamento']}"></h:commandLink><br/>
+            <sec:authorize ifAllGranted="ROLE_ADMIN">
+                <h:commandLink action="#{clienteBean.lista()}" value="#{msg['cliente.gerenciamento']}"></h:commandLink><br/>
+                <h:commandLink action="#{locadoraBean.lista()}" value="#{msg['locadora.gerenciamento']}"></h:commandLink><br/>            
+            </sec:authorize>
             
-            <h:commandLink action="#{locacaoBean.lista()}" value="#{msg['locacao.gerenciamento']}"></h:commandLink><br/>
+            <sec:authorize ifAllGranted="ROLE_CLIENTE">
+                  <h:commandLink action="#{locacaoBean.lista()}" value="#{msg['locacao.gerenciamento']}"></h:commandLink><br/>
+            </sec:authorize>
             
-            <h:commandLink action="#{locadoraBean.lista2()}" value="#{msg['locadora.list.page.title']}"></h:commandLink><br/>
- 
+            <sec:authorize ifAllGranted="ROLE_LOCADORA">
+                  <h:commandLink action="#{locacaoBean.lista2()}" value="#{msg['locacao.suas.locacoes']}"></h:commandLink><br/>
+            </sec:authorize>
+            
+            
+            <h:commandLink action="#{locadoraBean.lista2()}" value="#{msg['locadora.list.command.label']}"></h:commandLink><br/>
+            <br/>
+            <a href="#{request.contextPath}/logout">Logout</a>
         </h:form>
     </h:body> 
 </html>

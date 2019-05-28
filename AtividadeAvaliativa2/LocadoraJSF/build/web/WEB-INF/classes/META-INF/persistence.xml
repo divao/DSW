@@ -5,6 +5,8 @@
     <class>br.ufscar.dc.dsw.pojo.Cliente</class>
     <class>br.ufscar.dc.dsw.pojo.Locacao</class>
     <class>br.ufscar.dc.dsw.pojo.Locadora</class>
+    <class>br.ufscar.dc.dsw.pojo.Papel</class>
+    <class>br.ufscar.dc.dsw.pojo.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Locadora"/>

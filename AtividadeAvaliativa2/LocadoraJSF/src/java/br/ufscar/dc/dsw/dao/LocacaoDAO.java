@@ -1,10 +1,13 @@
 package br.ufscar.dc.dsw.dao;
  
 import br.ufscar.dc.dsw.pojo.Locacao;
+import br.ufscar.dc.dsw.pojo.Locadora;
+import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
  
 public class LocacaoDAO extends GenericDAO<Locacao>{
     
@@ -53,5 +56,24 @@ public class LocacaoDAO extends GenericDAO<Locacao>{
         Locacao locacao = em.find(Locacao.class, id);
         em.close();
         return locacao;
+    }
+    
+    public List<Locacao> getPorLocadora() {
+        EntityManager em = this.getEntityManager();
+        String s = "select p from Locacao p JOIN p.locadora l where l.email = :email";
+        String email = new UsuarioDAO().getEmailUsuarioLogado();
+        TypedQuery<Locacao> q = em.createQuery(s, Locacao.class);
+        q.setParameter("email", email);
+        return q.getResultList();
+    }
+    
+    public List<Locacao> getPorCliente() {
+        EntityManager em = this.getEntityManager();
+        String s = "select p from Locacao p JOIN p.cliente c where c.email = :email";
+        String email = new UsuarioDAO().getEmailUsuarioLogado();
+        System.out.println(email);
+        TypedQuery<Locacao> q = em.createQuery(s, Locacao.class);
+        q.setParameter("email", email);
+        return q.getResultList();
     }
 }
