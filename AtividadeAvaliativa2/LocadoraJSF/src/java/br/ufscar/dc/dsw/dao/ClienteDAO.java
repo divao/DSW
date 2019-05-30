@@ -66,5 +66,32 @@ public class ClienteDAO extends GenericDAO<Cliente> {
         return (Cliente) q.getSingleResult();
     }
     
+    public Cliente getPorCpf(String cpf) {
+        EntityManager em = this.getEntityManager();
+        String s = "select c from Cliente c where c.cpf = :cpf";
+        Query q = em.createQuery(s, Cliente.class);
+        q.setParameter("cpf", cpf);
+        return (Cliente) q.getSingleResult();
+    }
+    
+    
+    
+    public List<Cliente> getAllPorCpf(String cpf) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select c from Cliente c where c.cpf = :cpf", Cliente.class);
+        q.setParameter("cpf", cpf);
+        List<Cliente> clientes = q.getResultList();
+        em.close();
+        return clientes;
+    }
+    
+    public List<Cliente> getAllPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select c from Cliente c where c.email = :email", Cliente.class);
+        q.setParameter("email", email);
+        List<Cliente> clientes = q.getResultList();
+        em.close();
+        return clientes;
+    }
     
 }

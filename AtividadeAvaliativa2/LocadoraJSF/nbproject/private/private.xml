@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/AppConfig.java</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/locacao/index.xhtml</file>
             <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/index.xhtml</file>
-            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/dao/CriaUsuarios.java</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/bean/LocacaoBean.java</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/Jackson%20Victor/Documents/NetBeansProject/LocadoraJSF/src/java/br/ufscar/dc/dsw/pojo/Locacao.java</file>
         </group>
     </open-files>
 </project-private>

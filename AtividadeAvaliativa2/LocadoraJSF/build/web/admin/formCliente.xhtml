@@ -21,17 +21,16 @@
                 </div>  
             </div>  
             <hr/>  
-            <div class="form-group">  
+            <div class="form-group">
+
+                
                 <h:outputLabel for="cpf" class="control-label col-sm-4">#{msg['cliente.cpf.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    
-
                     <p:inputMask id="cpf" value="#{clienteBean.cliente.cpf}" class="form-control"   
-                                 validatorMessage="#{msg['cliente.cpf.required.message']}" mask="999.999.999-99">
+                                 validator="#{clienteBean.validarCPF}" validatorMessage="#{msg['cliente.cpf.required.message']}" mask="999.999.999-99">
                         <f:validateRequired/>
-
                     </p:inputMask>                    
-                    <h:message for="cpf"/>
+                    <p:message for="cpf"/>
                 </div>  
             </div>  
 
@@ -42,23 +41,18 @@
                                  validatorMessage="#{msg['cliente.nome.required.message']}">
                         <f:validateRequired/>
                     </p:inputText>
-                    <h:message for="nomeCliente"/>
+                    <p:message for="nomeCliente"/>
                 </div>  
             </div>  
             <div class="form-group">  
                 <h:outputLabel for="email" class="control-label col-sm-4">#{msg['cliente.email.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
                     <p:inputText id="email" value="#{clienteBean.cliente.email}" class="form-control"   
-                                 validatorMessage="#{msg['cliente.email.required.message']}"
+                                 validator="#{clienteBean.validarEmail}" validatorMessage="#{msg['cliente.email.required.message']}"
                                  a:type="text" >
                         <f:validateRequired/>
-
-
-
                     </p:inputText>
-
-
-                    <h:message for="email"/>
+                    <p:message for="email"/>
                 </div>  
             </div>
 
@@ -70,45 +64,46 @@
                                  a:type="Password" >
                         <f:validateRequired/>
                     </p:inputText>
-                    <h:message for="senha"/>
+                    <p:message for="senha"/>
                 </div>  
             </div>
 
             <div class="form-group">  
                 <h:outputLabel for="telefone" class="control-label col-sm-4">#{msg['cliente.telefone.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    
+
 
                     <p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}" class="form-control"   
-                                 validatorMessage="#{msg['cliente.telefone.required.message']}" mask="(99) 9999-9999">
+                                 validatorMessage="#{msg['cliente.telefone.required.message']}" mask="(99) 99999-9999">
                         <f:validateRequired/>
 
                     </p:inputMask>                    
-                    <h:message for="telefone"/>
+                    <p:message for="telefone"/>
                 </div>  
             </div>  
 
             <div class="form-group">  
                 <h:outputLabel for="dataNascimento" class="control-label col-sm-4">#{msg['cliente.datanascimento.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <p:inputText id="ano" value="#{clienteBean.cliente.dataNascimento}" class="form-control"   
-                                 validatorMessage="#{msg['cliente.datanascimento.required.message']}"
-                                 a:type="date" >
+                    <p:inputMask id="dataNascimento" value="#{clienteBean.cliente.dataNascimento}" class="form-control"   
+                                 validator="#{clienteBean.validarDataNascimento}" validatorMessage="#{msg['cliente.datanascimento.required.message']}" mask="99/99/9999">
                         <f:validateRequired/>
+                    </p:inputMask>
 
-                    </p:inputText>
-                    <h:message for="email"/>
+                    <p:message for="dataNascimento"/>
                 </div>  
             </div>
 
             <div class="form-group">  
                 <h:outputLabel for="sexo" class="control-label col-sm-4">#{msg['cliente.sexo.label']}</h:outputLabel>  
                 <div class="col-sm-4">  
-                    <p:inputText id="sexo" value="#{clienteBean.cliente.sexo}" class="form-control"   
-                                 validatorMessage="#{msg['cliente.sexo.required.message']}">
-                        <f:validateRequired/>
-                    </p:inputText>
-                    <h:message for="sexo"/>
+                    
+                    <h:selectOneMenu id="sexo" value="#{clienteBean.cliente.sexo}">
+                        <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                        <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+                    </h:selectOneMenu>
+ 
+                    <p:message for="sexo"/>
                 </div>  
             </div>  
 
@@ -117,9 +112,10 @@
                 <div class="col-sm-4"></div>  
                 <div class="col-sm-4">  
                     <div class="col-sm-2">
-                        <h:commandButton value="#{msg['cliente.save.command.label']}" action="#{clienteBean.salva()}" 
-                                         class="btn btn-primary" style="width: 80px;">
-                        </h:commandButton>  
+                        <h:commandButton id="btnSalvar" value="#{msg['cliente.save.command.label']}" action="#{clienteBean.salva()}" 
+                                         class="btn btn-primary"  style="width: 80px;" >
+                        </h:commandButton> 
+                        
                     </div>  
                     <br/> 
                     <div class="col-sm-2">  

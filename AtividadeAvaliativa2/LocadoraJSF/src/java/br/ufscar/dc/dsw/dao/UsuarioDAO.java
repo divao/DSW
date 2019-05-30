@@ -56,6 +56,23 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         em.close();
         return usuario;
     }
+    
+    public Usuario getPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        String s = "select u from Usuario u where u.email = :email";
+        Query q = em.createQuery(s, Usuario.class);
+        q.setParameter("email", email);
+        return (Usuario) q.getSingleResult();
+    }
+    
+    public List<Usuario> getAllPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select u from Usuario u where u.email = :email", Usuario.class);
+        q.setParameter("email", email);
+        List<Usuario> usuarios = q.getResultList();
+        em.close();
+        return usuarios;
+    }
 
     public String getEmailUsuarioLogado() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

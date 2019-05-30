@@ -18,31 +18,29 @@
             </center>  
             <h:dataTable value="#{locacaoBean.getPorCliente()}" var="locacao"   
                          class="table table-striped table-hover table-bordered">  
-                
+
                 <h:column>  
                     <f:facet name="header">#{msg['locacao.id.label']}</f:facet>  
                     <h:outputText value="#{locacao.id}"/>  
                 </h:column>  
-                
-                 <h:column>  
+
+                <h:column>  
                     <f:facet name="header">#{msg['locacao.cliente.label']}</f:facet>  
                     <h:outputText value="#{locacao.cliente}"/>  
                 </h:column>  
-                
+
                 <h:column>  
                     <f:facet name="header">#{msg['locacao.locadora.label']}</f:facet>  
                     <h:outputText value="#{locacao.locadora}"/>  
                 </h:column>  
-                
+
                 <h:column>  
                     <f:facet name="header">#{msg['locacao.data.label']}</f:facet>  
-                    <h:outputText value="#{locacao.data}"/>  
+                    <h:outputText value="#{locacao.data}">  
+                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-03:00"/>
+                    </h:outputText>
                 </h:column>  
-                
-                <h:column>  
-                    <f:facet name="header">#{msg['locacao.horario.label']}</f:facet>  
-                    <h:outputText value="#{locacao.horario}"/>  
-                </h:column> 
+
 
                 <h:column>  
                     <f:facet name="header"></f:facet>  
