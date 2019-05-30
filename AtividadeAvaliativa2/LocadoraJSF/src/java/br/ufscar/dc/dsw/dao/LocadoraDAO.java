@@ -55,12 +55,38 @@ public class LocadoraDAO extends GenericDAO<Locadora> {
         em.close();
         return locadora;
     }
-    
-     public List<Locadora> getPorCidade(String cidade) {
+
+    public List<Locadora> getPorCidade(String cidade) {
         EntityManager em = this.getEntityManager();
         String s = "select p from Locadora p where p.cidade = :cidade";
         TypedQuery<Locadora> q = em.createQuery(s, Locadora.class);
         q.setParameter("cidade", cidade);
         return q.getResultList();
+    }
+    
+    public Locadora getPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        String s = "select l from Locadora l where l.email = :email";
+        Query q = em.createQuery(s, Locadora.class);
+        q.setParameter("email", email);
+        return (Locadora) q.getSingleResult();
+    }
+    
+    public List<Locadora> getAllPorCnpj(String cnpj) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select c from Locadora c where c.cnpj = :cnpj", Locadora.class);
+        q.setParameter("cnpj", cnpj);
+        List<Locadora> locadoras = q.getResultList();
+        em.close();
+        return locadoras;
+    }
+    
+    public List<Locadora> getAllPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select c from Locadora c where c.email = :email", Locadora.class);
+        q.setParameter("email", email);
+        List<Locadora> locadoras = q.getResultList();
+        em.close();
+        return locadoras;
     }
 }

@@ -2,6 +2,7 @@ package br.ufscar.dc.dsw.pojo;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,8 +16,10 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique=true)
     private String cpf;
     private String nome;
+    @Column(unique=true)
     private String email;
     private String senha;
     private String telefone;

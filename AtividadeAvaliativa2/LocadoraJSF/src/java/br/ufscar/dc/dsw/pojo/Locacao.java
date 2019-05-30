@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.pojo;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,18 +25,8 @@ public class Locacao implements Serializable{
     @ManyToOne
     private Locadora locadora;
     
-    @Temporal(value = TemporalType.DATE)
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date data;
-    
-    private String horario;
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
     
     public Date getData() {
         return data;

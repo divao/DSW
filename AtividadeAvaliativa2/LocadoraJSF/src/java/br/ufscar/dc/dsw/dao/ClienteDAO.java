@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class ClienteDAO extends GenericDAO<Cliente> {
 
@@ -54,4 +55,43 @@ public class ClienteDAO extends GenericDAO<Cliente> {
         em.close();
         return cliente;
     }
+    
+    
+    
+    public Cliente getPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        String s = "select c from Cliente c where c.email = :email";
+        Query q = em.createQuery(s, Cliente.class);
+        q.setParameter("email", email);
+        return (Cliente) q.getSingleResult();
+    }
+    
+    public Cliente getPorCpf(String cpf) {
+        EntityManager em = this.getEntityManager();
+        String s = "select c from Cliente c where c.cpf = :cpf";
+        Query q = em.createQuery(s, Cliente.class);
+        q.setParameter("cpf", cpf);
+        return (Cliente) q.getSingleResult();
+    }
+    
+    
+    
+    public List<Cliente> getAllPorCpf(String cpf) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select c from Cliente c where c.cpf = :cpf", Cliente.class);
+        q.setParameter("cpf", cpf);
+        List<Cliente> clientes = q.getResultList();
+        em.close();
+        return clientes;
+    }
+    
+    public List<Cliente> getAllPorEmail(String email) {
+        EntityManager em = this.getEntityManager();
+        Query q = em.createQuery("select c from Cliente c where c.email = :email", Cliente.class);
+        q.setParameter("email", email);
+        List<Cliente> clientes = q.getResultList();
+        em.close();
+        return clientes;
+    }
+    
 }
