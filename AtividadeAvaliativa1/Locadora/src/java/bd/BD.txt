@@ -1,0 +1,56 @@
+create table Cliente(
+    cpf varchar(255) not null,
+    nome varchar(255) not null,
+    email varchar(255) not null unique,
+    senha varchar(255) not null,
+    telefone varchar(255) not null,
+    dataDeNascimento date not null,
+    sexo char(1) not null,
+    ativo smallint not null,
+
+    constraint Cliente_PK primary key(cpf)
+);
+
+create table Locadora(
+    cnpj varchar(255) not null,
+    nome varchar(255) not null,
+    email varchar(255) not null,
+    senha varchar(255) not null,
+    cidade varchar(255) not null,
+    ativo smallint not null,
+    constraint Locadora_PK primary key(cnpj)
+);
+
+create table Locacao(
+    cpf varchar(255) not null,
+    cnpj varchar(255) not null,
+    dataLocacao date not null,
+    horario integer not null,
+    constraint Cliente_FK foreign key (cpf) references Cliente(cpf),
+    constraint Locadora_FK foreign key (cnpj) references Locadora(cnpj),
+    constraint Locacao_PK primary key (cpf,cnpj,dataLocacao,horario)
+);
+
+create table Papel(
+	id integer not null generated always as identity (start with 1, increment by 1),
+	email varchar(50) not null,
+	nome varchar(50) not null,
+	constraint Papel_PK PRIMARY KEY (id)
+);
+
+CREATE VIEW logins AS 
+    SELECT c.email AS email, c.senha AS senha, c.ativo as ativo FROM Cliente AS c
+    UNION 
+    SELECT l.email AS email, l.senha AS senha, l.ativo as ativo FROM Locadora AS l;
+	
+SELECT * FROM logins;
+
+
+
+--insert into Cliente (cpf,nome,email,senha,telefone,dataDeNascimento,sexo,ativo) values --('1','admin','admin@admin','admin','1',Date('01/01/0001'),'M',1);
+
+--Insert into Papel (email, nome) values ('admin@admin','ROLE_ADMIN');
+
+--insert into Cliente (cpf,nome,email,senha,telefone,dataDeNascimento,sexo,ativo) values --('2','usuario','user@user','user','1',Date('01/01/0001'),'M',1);
+
+--Insert into Papel (email, nome) values ('user@user','ROLE_USER');

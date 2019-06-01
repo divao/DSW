@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>  
+        <title>#{msg['locacao.form.page.title']}</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+              crossorigin="anonymous"/>  
+    </h:head>  
+    <h:body>  
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">  
+                <div class="col-sm-4"></div>  
+                <div  class="col-sm-4">  
+                    <h2 style="text-align: center">#{msg['locacao.form.label']}</h2>  
+                </div>  
+            </div>  
+            <hr/>  
+
+
+
+
+            <div class="form-group">  
+                <h:outputLabel for="locadora" class="control-label col-sm-4">#{msg['locacao.locadora.label']}</h:outputLabel>  
+                <div class="col-sm-4">
+                    <h:selectOneMenu id="locadora" value="#{locacaoBean.locacao.locadora}">
+                        <f:selectItems value="#{locadoraBean.locadoras}"/>
+                        <f:converter converterId="LocadoraConverter" />
+                    </h:selectOneMenu>
+                    <p:message for="locadora"/>
+                </div>  
+            </div>  
+
+            <div class="form-group">  
+                <h:outputLabel for="data" class="control-label col-sm-4">#{msg['locacao.data.label']}</h:outputLabel>  
+                <div class="col-sm-4">  
+                    <p:calendar id="data" value="#{locacaoBean.locacao.data}" pattern="dd/MM/yyyy HH:00" validator="#{locacaoBean.validarData}" validatorMessage="#{msg['locacao.data.required.message']}">
+                        <f:validateRequired/>
+                    </p:calendar>
+
+                    <p:messages id ="msgData" showDetail="true" autoUpdate="true" closable="true"/>
+                </div>  
+            </div>
+
+
+
+
+            <div class="form-group">  
+                <div class="col-sm-4"></div>  
+                <div class="col-sm-4">  
+                    <div class="col-sm-2">
+                        <h:commandButton value="#{msg['locacao.save.command.label']}" action="#{locacaoBean.salva()}"
+                                         class="btn btn-primary" style="width: 80px;" >
+                        </h:commandButton>  
+                    </div>  
+                    <br/> 
+                    <div class="col-sm-2">  
+                        <h:link outcome="index" value="#{msg['locacao.list.command.label']}" class="btn btn-success" />  
+                    </div>  
+                </div>  
+            </div>  
+        </h:form>  
+    </h:body>  
+</html>
