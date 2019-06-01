@@ -6,39 +6,53 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>#{msg['root.page.title']}</title>
+        <link rel="stylesheet" 
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+              crossorigin="anonymous"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <h:outputStylesheet name="/css/estilo.css"/>
+        
     </h:head>
     <h:body>
+        <center>
+        <br/>   
         <h1 >#{msg['root.boas.vindas']}</h1>
-        <h3>#{msg['root.back.label']}</h3>
+        <hr />
+        <div class="card bg-light text-black" style="max-width: 30rem;">
+        <h3 class="card-header">#{msg['root.back.label']}</h3>
+        <br/>
         <h:form>
-
-            <h:commandLink id = "linkCliente" action="admin/indexCliente.xhtml?faces-redirect=true" value="#{msg['cliente.gerenciamento']}"></h:commandLink><br/>
-            <h:commandLink id = "linkLocadora" action="admin/indexLocadora.xhtml?faces-redirect=true" value="#{msg['locadora.gerenciamento']}"></h:commandLink><br/>            
-
-
-
-            <h:commandLink id = "linkLocacao" action="locacao/index.xhtml?faces-redirect=true" value="#{msg['locacao.gerenciamento']}"></h:commandLink><br/>
-
-
-
-            <h:commandLink id = "linkListaLocacao" action="locadora/listaLocacao.xhtml?faces-redirect=true" value="#{msg['locacao.suas.locacoes']}"></h:commandLink><br/>
-
-
-
-            <h:commandLink id ="linkLista" action="anonymous/lista.xhtml?faces-redirect=true" value="#{msg['locadora.list.menu']}"></h:commandLink><br/>
+            <h:commandLink class="btn btn-danger" id = "linkCliente" action="admin/indexCliente.xhtml?faces-redirect=true" value="#{msg['cliente.gerenciamento']}"></h:commandLink><br/>
+            <br/>
+            <h:commandLink class="btn btn-danger" id = "linkLocadora" action="admin/indexLocadora.xhtml?faces-redirect=true" value="#{msg['locadora.gerenciamento']}"></h:commandLink><br/>            
+            <br/>
+            <h:commandLink class="btn btn-primary" id = "linkLocacao" action="locacao/index.xhtml?faces-redirect=true" value="#{msg['locacao.gerenciamento']}"></h:commandLink><br/>
+            <br/>
+            <h:commandLink class="btn btn-warning" id = "linkListaLocacao" action="locadora/listaLocacao.xhtml?faces-redirect=true" value="#{msg['locacao.suas.locacoes']}"></h:commandLink><br/>
+            <br/>
+            <h:commandLink class="btn btn-secondary" id ="linkLista" action="anonymous/lista.xhtml?faces-redirect=true" value="#{msg['locadora.list.menu']}"></h:commandLink><br/>
+            <br/>
             <h:outputLabel value="#{msg['locadora.list.menu.cidade']}"></h:outputLabel>
             
-            <h:selectOneMenu id="cidade" onchange="getCidade()" value="#{locadoraBean.cidade}" >
+            <div class="form-group row justify-content-center">
+            <div class="col-sm-5">
+            <h:selectOneMenu class="custom-select" id="cidade" onchange="getCidade()" value="#{locadoraBean.cidade}" >
                         <f:selectItems value="#{locadoraBean.getCidades()}"/>
             </h:selectOneMenu>
-            
+            </div>
             <h:commandButton id="btnPesquisar" value="#{msg['locadora.pesquisar']}" onclick = "getCidade()" action="anonymous/listaPorCidade.xhtml?faces-redirect=true" 
-                                 class="btn btn-primary" style="width: 80px;">
+                                 class="btn btn-primary">
             </h:commandButton>  
-            
-            
-            <br/><br/>
-            <a href="#{request.contextPath}/logout">Logout</a>
+            </div>
+            <hr/> 
+            <a class="btn btn-dark btn-sm" href="#{request.contextPath}/logout">Logout</a>
+            <br/>
         </h:form>
+        <br/>
+        </div>
+        </center>
     </h:body> 
 </html>
