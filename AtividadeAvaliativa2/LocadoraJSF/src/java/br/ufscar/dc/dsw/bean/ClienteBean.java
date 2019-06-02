@@ -10,6 +10,7 @@ import br.ufscar.dc.dsw.pojo.Papel;
 import br.ufscar.dc.dsw.pojo.Usuario;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -92,16 +93,16 @@ public class ClienteBean {
             u.setAtivo(false);
             usuarioDAO.update(u);
         }
-        
-        try{
+
+        try {
             dao.delete(cliente);
-        }catch(PersistenceException e){
+        } catch (PersistenceException e) {
             mensagemErro("Não foi possível remover esse cliente! Há referências associadas a ele!");
             e.printStackTrace();
         }
         return "indexCliente.xhtml";
     }
-    
+
     public void mensagemErro(String mensagem) {
         FacesContext.getCurrentInstance().addMessage(":form:msgErro", new FacesMessage(FacesMessage.SEVERITY_ERROR, "", mensagem));
     }
@@ -121,13 +122,18 @@ public class ClienteBean {
 
         ClienteDAO dao = new ClienteDAO();
         String value = (String) obj;
-        List<Cliente> cli = dao.getAllPorEmail(value);
+        List<Cliente> cli = dao.getAll();
+        List<String> emails = new ArrayList<>();
+
+        cli.forEach((c) -> {
+            emails.add(c.getEmail());
+        });
 
         if (!isValidEmailAddressRegex(value)) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Digite um email válido!");
             context.addMessage(toValidate.getClientId(context), message);
-        } else if (!cli.isEmpty() && cli.get(0).getEmail().equals(value) && cliente.getId() == null) {
+        } else if (emails.contains(value) && (cliente.getId() == null || !cliente.getEmail().equals(value))) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Email já cadastrado!");
             context.addMessage(toValidate.getClientId(context), message);
@@ -154,13 +160,20 @@ public class ClienteBean {
         ClienteDAO dao = new ClienteDAO();
 
         String value = (String) obj;
-        List<Cliente> cli = dao.getAllPorCpf(value);
+        List<Cliente> cli = dao.getAll();
+        List<String> cpfs = new ArrayList<>();
+
+        cli.forEach((c) -> {
+            cpfs.add(c.getCpf());
+        });
+
+        
 
         if (!isCPF(value.replace(".", "").replace("-", ""))) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Digite um CPF válido!");
             context.addMessage(toValidate.getClientId(context), message);
-        } else if (!cli.isEmpty() && cli.get(0).getCpf().equals(value) && cliente.getId() == null) {
+        } else if (cpfs.contains(value) && (cliente.getId() == null || !cliente.getCpf().equals(value))) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "CPF já cadastrado!");
             context.addMessage(toValidate.getClientId(context), message);

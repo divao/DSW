@@ -67,10 +67,7 @@ public class LocacaoBean {
                 retorno = "index.xhtml";
             }
         } else {
-            if (!listaLocacaoCliente.isEmpty()) {
-                mensagemErro("Você já possui uma locação nesse dia e horário!");
-
-            } else if (!listaLocacaoLocadora.isEmpty()) {
+            if (!listaLocacaoLocadora.isEmpty()) {
                 mensagemErro("Essa locadora possui uma locação nesse dia e horário!");
             } else {
                 dao.update(locacao);

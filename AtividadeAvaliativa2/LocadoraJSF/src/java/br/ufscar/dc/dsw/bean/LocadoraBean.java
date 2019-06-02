@@ -68,6 +68,7 @@ public class LocadoraBean {
             usuarioDAO.update(u);
         } else {
             dao.update(locadora);
+            usuarioDAO.save(u);
             u.getPapel().add(p);
             usuarioDAO.update(u);
         }
@@ -158,13 +159,18 @@ public class LocadoraBean {
         LocadoraDAO dao = new LocadoraDAO();
 
         String value = (String) obj;
-        List<Locadora> loc = dao.getAllPorCnpj(value);
+        List<Locadora> loc = dao.getAll();
+        List<String> cnpjs = new ArrayList<>();
+
+        for(Locadora c : loc){
+            cnpjs.add(c.getCnpj());
+        }
 
         if (!isCNPJ(value.replace(".", "").replace("-", "").replace("/", ""))) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Digite um CNPJ válido!");
             context.addMessage(toValidate.getClientId(context), message);
-        } else if (!loc.isEmpty() && loc.get(0).getCnpj().equals(value) && locadora.getId() == null) {
+        } else if (cnpjs.contains(value) && (locadora.getId() == null || !locadora.getCnpj().equals(value))) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "CNPJ já cadastrado!");
             context.addMessage(toValidate.getClientId(context), message);
@@ -177,13 +183,18 @@ public class LocadoraBean {
 
         LocadoraDAO dao = new LocadoraDAO();
         String value = (String) obj;
-        List<Locadora> loc = dao.getAllPorEmail(value);
+        List<Locadora> loc = dao.getAll();
+        List<String> emails = new ArrayList<>();
+
+        for(Locadora c: loc){
+            emails.add(c.getEmail());
+        }
 
         if (!isValidEmailAddressRegex(value)) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Digite um email válido!");
             context.addMessage(toValidate.getClientId(context), message);
-        } else if (!loc.isEmpty() && loc.get(0).getEmail().equals(value) && locadora.getId() == null) {
+        } else if (emails.contains(value) && (locadora.getId() == null || !locadora.getEmail().equals(value))) {
             ((UIInput) toValidate).setValid(false);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Email já cadastrado!");
             context.addMessage(toValidate.getClientId(context), message);

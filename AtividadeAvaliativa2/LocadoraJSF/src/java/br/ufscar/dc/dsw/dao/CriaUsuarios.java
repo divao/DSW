@@ -182,7 +182,7 @@ public class CriaUsuarios {
         Locadora l4 = new Locadora();
         l4.setCnpj("03.261.024/0001-92");
         l4.setNome("Locadora 4");
-        l4.setEmail("locadora1@locadora.com");
+        l4.setEmail("locadora4@locadora.com");
         l4.setSenha("12345678");
         l4.setCidade("Araraquara");
         locadoraDAO.save(l4);
